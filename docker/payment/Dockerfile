@@ -2,6 +2,8 @@ FROM golang:1.7
 
 COPY . /go/src/github.com/microservices-demo/payment/
 
+#RUN apt-get install apt-transport-https ca-certificates -y && sudo update-ca-certificates
+ENV     GIT_SSL_NO_VERIFY=1
 RUN go get -u github.com/FiloSottile/gvt
 RUN cd /go/src/github.com/microservices-demo/payment/ && gvt restore
 
